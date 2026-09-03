@@ -23,7 +23,7 @@ export default function Home() {
             "#451a03",
           ]}
           backgroundFill="#0a0a0a"
-          speed="slow"
+          speed="fast"
           waveOpacity={0.3} // Reducimos un poco la opacidad para que no sature la lectura del texto
         />
       </div>
