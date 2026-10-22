@@ -10,6 +10,7 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
+  --font-p3: var(--font-archivo);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -127,4 +128,38 @@
   html {
     @apply font-sans;
   }
+}
+
+/* Menú estilo Persona 3 Reload */
+.p3-water {
+  background:
+    radial-gradient(ellipse at 25% 15%, rgb(125 230 253 / 0.45), transparent 50%),
+    linear-gradient(160deg, #1fb6ff 0%, #1440d8 45%, #0b1a9e 100%);
+}
+.p3-water::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(105deg, transparent 0 90px, rgb(255 255 255 / 0.08) 120px, transparent 150px),
+    repeating-linear-gradient(80deg, transparent 0 140px, rgb(160 240 255 / 0.07) 170px, transparent 210px);
+  filter: blur(12px);
+  animation: p3-caustics 10s ease-in-out infinite alternate;
+}
+.p3-pulse {
+  animation: p3-pulse 0.8s ease-in-out infinite;
+}
+.p3-outline {
+  text-shadow:
+    -2px -2px 0 #6b7280, 0 -2px 0 #6b7280, 2px -2px 0 #6b7280, 2px 0 0 #6b7280,
+    2px 2px 0 #6b7280, 0 2px 0 #6b7280, -2px 2px 0 #6b7280, -2px 0 0 #6b7280;
+}
+@keyframes p3-caustics {
+  to { background-position: 300px 0, -400px 0; }
+}
+@keyframes p3-pulse {
+  50% { opacity: 0.45; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .p3-water::after, .p3-pulse { animation: none; }
 }

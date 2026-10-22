@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Geist } from "next/font/google";
+import { Inter, Geist, Archivo_Black } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({ subsets: ["latin"] });
+
+const archivoBlack = Archivo_Black({ weight: "400", subsets: ["latin"], variable: "--font-archivo" });
 
 export const metadata: Metadata = {
   title: "Adrián García López | Portafolio",
@@ -18,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={cn("scroll-smooth", "font-sans", geist.variable)}>
+    <html lang="es" className={cn("scroll-smooth", "font-sans", geist.variable, archivoBlack.variable)}>
       <body className={`${inter.className} bg-[#0a0a0a] text-slate-100 antialiased`}>
         {children}
       </body>

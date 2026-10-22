@@ -1,7 +1,8 @@
 "use client";
 
+import { SectionTitle } from "./ui/p3-label";
 import React from "react";
-import { MagicCard } from "./ui/magic-card";
+import { P3Card } from "./ui/p3-label";
 
 import {
   SiJavascript,
@@ -76,21 +77,17 @@ const techCategories = [
 export default function TechStack() {
   return (
     <section id="tech-stack" className="w-full py-24">
-      <div className="mb-16 flex flex-col items-center">
-        <h2 className="mb-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
-          Tech Stack
-        </h2>
-
-        <p className="max-w-xl text-center text-sm text-neutral-400 md:text-base">
-          A comprehensive collection of languages, frameworks, databases, and
-          engineering tools I use to build robust software.
-        </p>
+      <div className="mb-16 flex flex-col items-start">
+        <SectionTitle
+          title="TECH STACK"
+          subtitle="A comprehensive collection of languages, frameworks, databases, and engineering tools I use to build robust software."
+        />
       </div>
 
       <div className="space-y-12">
         {techCategories.map((category) => (
           <div key={category.title} className="flex flex-col">
-            <h3 className="mb-6 text-xs font-semibold uppercase tracking-wide text-amber-500/90">
+            <h3 className="mb-6 -skew-x-12 font-p3 text-xl uppercase text-cyan-300">
               {category.title}
             </h3>
 
@@ -100,19 +97,13 @@ export default function TechStack() {
 
                 return (
                   <div key={tech.name} className="flex h-full min-h-0 flex-col">
-                    <MagicCard
-                      gradientFrom="#f59e0b"
-                      gradientTo="#78350f"
-                      className="group relative flex h-28 w-full flex-1 flex-col rounded-2xl bg-transparent shadow-xl"
-                    >
-                      <div className="relative flex h-full min-h-0 flex-1 flex-col items-center justify-center overflow-hidden rounded-[15px] bg-[#0d0d0d] p-4">
-                        <IconComponent className="mb-3 h-8 w-8 text-neutral-400 transition-colors duration-300 group-hover:text-amber-500" />
+                    <P3Card className="h-28" bodyClassName="items-center justify-center p-4">
+                        <IconComponent className="mb-3 h-8 w-8 text-slate-400 transition-colors duration-300 group-hover:text-cyan-300 group-focus-within:text-cyan-300" />
 
-                        <span className="text-center text-xs font-medium tracking-wide text-neutral-300 transition-colors duration-300 group-hover:text-white">
+                        <span className="text-center text-xs font-medium tracking-wide text-slate-300 transition-colors duration-300 group-hover:text-white group-focus-within:text-white">
                           {tech.name}
                         </span>
-                      </div>
-                    </MagicCard>
+                      </P3Card>
                   </div>
                 );
               })}
