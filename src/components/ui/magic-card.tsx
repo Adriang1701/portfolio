@@ -243,12 +243,12 @@ export function MagicCard(props: MagicCardProps) {
       style={{
         border: "1px solid transparent",
         background: useMotionTemplate`
-          linear-gradient(#0d0d0d, #0d0d0d) padding-box,
+          linear-gradient(#0a1450, #0a1450) padding-box,
           radial-gradient(
             ${gradientSize}px circle at ${mouseX}px ${mouseY}px,
             ${gradientFrom},
             ${gradientTo},
-            var(--color-border, #404040) 100%
+            #1e3a8a 100%
           ) border-box
         `,
       }}
