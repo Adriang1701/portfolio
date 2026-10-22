@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 
-// Cuña blanca detrás del texto; el texto rojo se recorta con el mismo polígono
 const wedge = "polygon(2% 82%, 97% 6%, 88% 62%)";
 const pinkWedge = "polygon(0% 80%, 100% 0%, 92% 68%)";
 const pad = "pl-[0.4em] pr-[1.4em] py-[0.4em]";
@@ -42,7 +41,6 @@ export function SectionTitle({ title, subtitle }: { title: string; subtitle: str
       <h2 className="-ml-[0.4em] -rotate-3 text-[clamp(2.75rem,7vw,5.5rem)]">
         <P3Label text={title} highlighted />
       </h2>
-      {/* Barra sólida para que no se pierda sobre el menú encogido del fondo */}
       <p className="mt-3 max-w-xl -skew-x-12 border-l-4 border-cyan-400 bg-[#0a1450] px-4 py-2 text-left text-sm font-bold italic text-cyan-100 md:text-base">
         {subtitle}
       </p>
@@ -50,11 +48,9 @@ export function SectionTitle({ title, subtitle }: { title: string; subtitle: str
   );
 }
 
-// Esquinas cortadas, como los recuadros de la UI de P3R
 const cut =
   "polygon(0 0, calc(100% - 1.25rem) 0, 100% 1.25rem, 100% 100%, 1.25rem 100%, 0 calc(100% - 1.25rem))";
 
-// `interactive` la vuelve navegable con flechas (data-p3-card) y le da el resaltado de selección
 export function P3Card({
   title,
   interactive = true,
@@ -79,7 +75,6 @@ export function P3Card({
         className
       )}
     >
-      {/* Sombra rosa desplazada y marco: aparecen/se iluminan al seleccionar */}
       <div
         aria-hidden
         className={cn(

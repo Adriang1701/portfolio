@@ -13,7 +13,6 @@ export default function About() {
       </div>
 
       <div className="grid grid-cols-1 items-stretch gap-8 md:grid-cols-3">
-        {/* Card 1: Academic & Professional Profile */}
         <div className="flex h-full min-h-0 flex-col">
           <P3Card title="Background & Focus" className="min-h-62.5 flex-1">
             <p className="text-sm leading-relaxed text-slate-300">
@@ -25,7 +24,6 @@ export default function About() {
           </P3Card>
         </div>
 
-        {/* Card 2: Research & NLP Interest */}
         <div className="flex h-full min-h-0 flex-col">
           <P3Card title="Research & AI" className="min-h-62.5 flex-1">
             <p className="text-sm leading-relaxed text-slate-300">
@@ -37,7 +35,6 @@ export default function About() {
           </P3Card>
         </div>
 
-        {/* Card 3: Languages & Continuous Learning */}
         <div className="flex h-full min-h-0 flex-col">
           <P3Card title="Beyond Code" className="min-h-62.5 flex-1">
             <p className="text-sm leading-relaxed text-slate-300">

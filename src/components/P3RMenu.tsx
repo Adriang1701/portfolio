@@ -16,7 +16,6 @@ const menuItems = [
   { label: "CONTACT", Section: Contact },
 ];
 
-// Rotación y desfase fijos por opción (no aleatorios, para evitar hydration mismatch)
 const tilts = [
   { rotate: -7, x: "0em" },
   { rotate: 4, x: "1.1em" },
@@ -26,9 +25,7 @@ const tilts = [
 const cyans = ["#16cffb", "#7de6fd", "#77fefc"];
 const ease = [0.7, 0, 0.2, 1] as const;
 
-// Mueve el foco a la tarjeta más cercana en la dirección de la flecha
 function moveCardFocus(key: string) {
-  // Incluye el botón de ayuda, que vive fuera del panel
   const cards = [...document.querySelectorAll<HTMLElement>("[data-p3-card]")];
   const current = document.activeElement?.closest<HTMLElement>("[data-p3-card]");
   const center = (el: HTMLElement) => {
@@ -48,7 +45,6 @@ export default function P3RMenu() {
   const helpButton = useRef<HTMLButtonElement>(null);
   const [help, setHelp] = useState(false);
   const isOpen = open !== null;
-  // Al abrir, el menú sale primero; al regresar, espera a que salga la sección
   const sceneTransition = { duration: 0.5, ease, delay: isOpen ? 0 : 0.3 };
 
   useEffect(() => {
@@ -57,7 +53,6 @@ export default function P3RMenu() {
         setHelp((h) => !h);
         return;
       }
-      // Con la ayuda abierta solo se escucha Esc para cerrarla
       if (help) {
         if (e.key === "Escape") setHelp(false);
         return;
@@ -68,7 +63,6 @@ export default function P3RMenu() {
           e.preventDefault();
           moveCardFocus(e.key);
         } else if (e.key === "Enter" && document.activeElement?.matches("div[data-p3-card]")) {
-          // Las tarjetas que no son enlace abren su primer enlace (p. ej. el proyecto)
           document.activeElement.querySelector("a")?.click();
         }
         return;
@@ -76,7 +70,6 @@ export default function P3RMenu() {
       const step = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
       if (!step) return;
       e.preventDefault();
-      // ↑↓ recorre las opciones y luego el botón de ayuda; el onFocus de cada opción actualiza `selected`
       const stops = [...buttons.current, helpButton.current];
       const current = stops.indexOf(document.activeElement as HTMLButtonElement);
       stops[((current === -1 ? selected : current) + step + stops.length) % stops.length]?.focus();
@@ -91,7 +84,6 @@ export default function P3RMenu() {
     <MotionConfig reducedMotion="user">
       <main className="relative h-dvh w-full overflow-hidden bg-white font-p3 text-black">
         <div inert={isOpen} className="absolute inset-0">
-          {/* Nombre gigante detrás del círculo */}
           <motion.p
             aria-hidden
             animate={isOpen ? { x: "-50vw", y: "40vh", opacity: 0 } : { x: 0, y: 0, opacity: 1 }}
@@ -101,7 +93,6 @@ export default function P3RMenu() {
             ADRIÁN
           </motion.p>
 
-          {/* Al abrir una sección el círculo cubre toda la pantalla y se oscurece */}
           <motion.div
             aria-hidden
             animate={isOpen ? { scale: 2.4, filter: "brightness(0.55)" } : { scale: 1, filter: "brightness(1)" }}
@@ -109,7 +100,6 @@ export default function P3RMenu() {
             className="p3-water absolute -right-[40vmax] -top-[35vmax] h-[110vmax] w-[110vmax] overflow-hidden rounded-full opacity-[0.94]"
           />
 
-          {/* Recuadro tipo "current wallet" */}
           <motion.div
             animate={isOpen ? { y: "-180%", opacity: 0 } : { y: 0, opacity: 1 }}
             transition={sceneTransition}
@@ -119,7 +109,6 @@ export default function P3RMenu() {
             <p className="-skew-x-12 font-sans text-xs font-bold italic">Adrián García López</p>
           </motion.div>
 
-          {/* Al abrir una sección el menú se encoge hacia la esquina, como los submenús de P3R */}
           <motion.nav
             aria-label="Main menu"
             animate={
@@ -145,7 +134,6 @@ export default function P3RMenu() {
                       initial={{ opacity: 0, x: 120 }}
                       animate={{
                         opacity: 1,
-                        // Al abrir, cada opción se desfasa y gira un poco más (efecto abanico)
                         x: isOpen ? (i - menuItems.length) * 40 : 0,
                         rotate: tilts[i].rotate + (isOpen ? -10 : 0),
                         scale: isSel ? 1.12 : 1,
@@ -177,10 +165,8 @@ export default function P3RMenu() {
               aria-modal="true"
               aria-label={menuItems[open].label}
               className="fixed inset-0 z-20 overflow-y-auto font-sans text-slate-100"
-              // Mantiene el panel montado mientras salen sus hijos
               exit={{ opacity: 0, transition: { delay: 0.35, duration: 0.05 } }}
             >
-              {/* Palabra gigante de la sección, como el "SYSTEM" del juego */}
               <motion.p
                 aria-hidden
                 initial={{ x: "-80vw", opacity: 0 }}
@@ -200,7 +186,6 @@ export default function P3RMenu() {
                 exit={{ x: 120, opacity: 0, transition: { duration: 0.2 } }}
                 className="group fixed right-6 top-6 z-10 cursor-pointer font-p3 text-2xl text-white outline-none"
               >
-                {/* La inclinación va en el span: motion controla el transform del botón */}
                 <span className="p3-outline block -skew-x-12 px-3 py-1 transition-all group-hover:bg-white group-hover:text-black group-hover:shadow-[4px_4px_0_#ff4fa3] group-hover:[text-shadow:none] group-focus-visible:bg-white group-focus-visible:text-black group-focus-visible:shadow-[4px_4px_0_#ff4fa3] group-focus-visible:[text-shadow:none]">
                   <kbd className="rounded-full border-2 border-current px-1.5 text-base">Esc</kbd> Back
                 </span>
@@ -218,11 +203,9 @@ export default function P3RMenu() {
           )}
         </AnimatePresence>
 
-        {/* Ayuda: se abre solo al presionar el botón (o la tecla ?) */}
         <button
           ref={helpButton}
           data-p3-card
-          // En el menú, seleccionar Help quita la selección de las opciones (-1 = ninguna)
           onFocus={() => !isOpen && setSelected(-1)}
           onMouseEnter={() => !isOpen && setSelected(-1)}
           onClick={() => setHelp((h) => !h)}

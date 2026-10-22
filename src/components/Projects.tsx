@@ -25,7 +25,6 @@ export default function Projects() {
           subtitle="Explore some of the most representative work in web development, mobile, and artificial intelligence."
         />
 
-        {/* Barra de Categorías */}
         <div className="mt-8 flex flex-wrap items-center justify-start gap-3">
           {categories.map((category) => (
             <button
@@ -44,12 +43,10 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* Grid de Proyectos */}
       <div className="grid grid-cols-1 items-stretch gap-10 pt-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredProjects.map((project: Project) => (
           <div key={project.id} className="flex h-full min-h-0 flex-col pt-4">
             <P3Card className="min-h-140 flex-1" bodyClassName="p-0">
-                {/* Imagen */}
                 <a
                   href={project.liveUrl || project.githubUrl || "#"}
                   target="_blank"
@@ -70,18 +67,14 @@ export default function Projects() {
                     />
                   </div>
 
-                  {/* Categoría */}
                   <span className="absolute left-3 top-3 z-30 -skew-x-12 bg-cyan-400 px-3 py-1 font-p3 text-[10px] uppercase text-black shadow-[3px_3px_0_#ff4fa3]">
                     {project.category}
                   </span>
 
-                  {/* Overlay */}
                   <div className="pointer-events-none absolute inset-0 z-30 bg-black/20 opacity-0 transition-transform duration-500 group-hover:-translate-y-2 group-hover:scale-105 group-hover:opacity-100" />
                 </a>
 
-                {/* Contenido completo */}
                 <div className="flex min-h-0 flex-1 flex-col p-6">
-                  {/* Parte superior */}
                   <div className="flex flex-col">
                     <h3 className="mb-2 -skew-x-12 font-p3 text-2xl tracking-tight text-white">
                       {project.title}
@@ -103,7 +96,6 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Parte inferior */}
                   <div className="mt-auto flex items-center gap-3 border-t border-blue-900/80 pt-4">
                     {project.githubUrl && (
                       <a
