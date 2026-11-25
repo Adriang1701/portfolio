@@ -7,12 +7,14 @@ import { isArrowKey, nearestInDirection } from "@/lib/spatial-nav";
 import About from "./About";
 import TechStack from "./TechStack";
 import Projects from "./Projects";
+import Certificates from "./Certificates";
 import Contact from "./Contact";
 
 const menuItems = [
   { label: "ABOUT", Section: About },
   { label: "SKILLS", Section: TechStack },
   { label: "PROJECTS", Section: Projects },
+  { label: "CERTIFICATES", Section: Certificates },
   { label: "CONTACT", Section: Contact },
 ];
 
@@ -20,6 +22,7 @@ const tilts = [
   { rotate: -7, x: "0em" },
   { rotate: 4, x: "1.1em" },
   { rotate: -3, x: "-0.3em" },
+  { rotate: 5, x: "0.4em" },
   { rotate: 6, x: "0.7em" },
 ];
 const cyans = ["#16cffb", "#7de6fd", "#77fefc"];
@@ -117,7 +120,7 @@ export default function P3RMenu() {
                 : { x: 0, y: 0, scale: 1, rotate: 0, opacity: 1 }
             }
             transition={sceneTransition}
-            className="absolute left-6 top-1/2 -translate-y-1/2 text-[clamp(2.25rem,8vw,6.5rem)] md:left-auto md:right-[10vw]"
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-[clamp(1.75rem,8vw,6.5rem)] md:left-auto md:right-[10vw]"
           >
             <ul>
               {menuItems.map(({ label }, i) => {
