@@ -22,8 +22,8 @@ const tilts = [
   { rotate: -7, x: "0em" },
   { rotate: 4, x: "1.1em" },
   { rotate: -3, x: "-0.3em" },
-  { rotate: 5, x: "0.4em" },
   { rotate: 6, x: "0.7em" },
+  { rotate: -3, x: "-0.3em" },
 ];
 const cyans = ["#16cffb", "#7de6fd", "#77fefc"];
 const ease = [0.7, 0, 0.2, 1] as const;

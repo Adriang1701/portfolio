@@ -27,18 +27,18 @@ export const projectsData: Project[] = [
   },
   {
     id: "2",
-    title: "TesloShop",
-    description: "Full-stack e-commerce web application featuring secure custom authentication, payment gateway integration, and efficient cart state management.",
+    title: "Etiquetas e Impresos",
+    description: "Website and online store for a family business selling custom labels and prints, with authentication, PayPal checkout, cart management and a PostgreSQL product catalog.",
     category: "Full Stack",
     images: [
-      { 
-        image: { src: "/images/tesloshop-1.png", alt: "StockIQ Dashboard" }, 
-        focusY: 50 
+      {
+        image: { src: "/images/etiquetas-1.png", alt: "Etiquetas e Impresos store" },
+        focusY: 50
       },
     ],
-    technologies: ["Next.js", "TypeScript", "React", "Zustand", "NextAuth"],
-    githubUrl: "https://github.com/Adriang1701/next-teslo-shop",
-    liveUrl: "https://next-teslo-shop-theta.vercel.app/",
+    technologies: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "NextAuth", "PayPal"],
+    githubUrl: "https://github.com/Adriang1701/etiquetas-e-impresos",
+    liveUrl: "https://etiquetas-e-impresos.vercel.app/",
   },
   {
     id: "3",
